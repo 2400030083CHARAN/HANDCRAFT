@@ -1,0 +1,9 @@
+.success-banner {
+  background: #d4edda;
+  color: #155724;
+  padding: 1rem 1.2rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  animation: fadeUp 0.3s ease;
+}

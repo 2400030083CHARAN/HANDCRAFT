@@ -1,0 +1,208 @@
+.product-detail {
+  padding: 8rem 0 5rem;
+}
+
+.not-found { padding: 5rem 0; font-size: 1.2rem; }
+.not-found a { color: var(--clay); }
+
+.back-link {
+  display: inline-block;
+  color: var(--clay);
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  transition: gap 0.2s;
+}
+
+.back-link:hover { opacity: 0.7; }
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+  margin-bottom: 4rem;
+}
+
+.big-image {
+  height: 480px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10rem;
+}
+
+.detail-badge {
+  display: block;
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.82rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.detail-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.detail-tribe {
+  font-size: 0.78rem;
+  color: var(--clay);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.detail-rating {
+  font-size: 0.85rem;
+  color: var(--gold);
+}
+
+.detail-title {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  color: var(--bark);
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.detail-artisan {
+  font-size: 0.9rem;
+  color: var(--smoke);
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.detail-price {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--clay);
+  margin-bottom: 0.5rem;
+}
+
+.detail-stock {
+  font-size: 0.85rem;
+  color: var(--moss);
+  margin-bottom: 1.5rem;
+}
+
+.qty-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.qty-row button {
+  width: 36px; height: 36px;
+  border-radius: 2px;
+  border: 1.5px solid var(--sand);
+  background: white;
+  font-size: 1.2rem;
+  color: var(--bark);
+  transition: all 0.2s;
+}
+
+.qty-row button:hover { border-color: var(--clay); color: var(--clay); }
+.qty-row span { font-size: 1.1rem; font-weight: 600; min-width: 24px; text-align: center; }
+
+.buy-btn {
+  width: 100%;
+  padding: 1rem;
+  background: var(--clay);
+  color: white;
+  border-radius: 2px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: background 0.2s;
+  margin-bottom: 1.5rem;
+}
+
+.buy-btn:hover { background: var(--bark); }
+.buy-btn.added { background: var(--moss); }
+
+.detail-tags {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.detail-tags span {
+  background: var(--sand);
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  color: var(--bark);
+}
+
+/* Tabs */
+.detail-tabs {
+  display: flex;
+  border-bottom: 2px solid var(--sand);
+  margin-bottom: 2rem;
+  gap: 0;
+}
+
+.tab-btn {
+  padding: 0.8rem 2rem;
+  background: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--smoke);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.2s;
+  text-transform: capitalize;
+  letter-spacing: 0.05em;
+}
+
+.tab-btn:hover { color: var(--clay); }
+.tab-btn.active { color: var(--clay); border-bottom-color: var(--clay); }
+
+.tab-panel { max-width: 700px; }
+.tab-panel p, .tab-panel h3 { margin-bottom: 1rem; line-height: 1.8; color: var(--smoke); }
+.tab-panel h3 { font-family: var(--font-display); color: var(--bark); font-size: 1.2rem; }
+
+.review-item {
+  border-bottom: 1px solid var(--sand);
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+}
+
+.review-header strong { color: var(--bark); }
+.review-header span { color: var(--gold); }
+
+.review-form {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.review-form textarea {
+  padding: 0.8rem;
+  border: 1.5px solid var(--sand);
+  border-radius: 2px;
+  font-family: var(--font-body);
+  resize: vertical;
+  color: var(--bark);
+}
+
+.review-form textarea:focus { outline: none; border-color: var(--clay); }
+
+@media (max-width: 768px) {
+  .detail-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .big-image { height: 280px; font-size: 6rem; }
+}
