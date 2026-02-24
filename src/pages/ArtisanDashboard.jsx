@@ -4,7 +4,18 @@ import './Dashboard.css'
 
 const myProducts = PRODUCTS.slice(0, 4)
 
-export default function ArtisanDashboard() {
+export default function ArtisanDashboard({ user }) {
+  if (user && user.role !== 'artisan') {
+    return (
+      <div className="dashboard-page">
+        <div className="dash-hero" style={{ background: 'linear-gradient(135deg, #5A6B3A 0%, #3D4F22 100%)' }}>
+          <h1>🤲 Artisan Dashboard</h1>
+          <p>This dashboard is available for artisan accounts only.</p>
+        </div>
+      </div>
+    )
+  }
+
   const [activeSection, setActiveSection] = useState('overview')
   const [newProduct, setNewProduct] = useState({ name: '', price: '', category: '', description: '' })
   const [products, setProducts] = useState(myProducts)
@@ -23,7 +34,7 @@ export default function ArtisanDashboard() {
     <div className="dashboard-page">
       <div className="dash-hero" style={{ background: 'linear-gradient(135deg, #5A6B3A 0%, #3D4F22 100%)' }}>
         <h1>🤲 Artisan Dashboard</h1>
-        <p>Manage your products, orders, and messages</p>
+        <p>Welcome {user?.name || 'Artisan'} — manage your products, orders, and messages</p>
       </div>
 
       <div className="container">
@@ -70,7 +81,8 @@ export default function ArtisanDashboard() {
                 </div>
                 <div className="artisan-profile">
                   <h3>Your Profile</h3>
-                  <div className="profile-row"><span>Name:</span><strong>Kavitha Meher</strong></div>
+                  <div className="profile-row"><span>Name:</span><strong>{user?.name || 'Kavitha Meher'}</strong></div>
+                  <div className="profile-row"><span>Email:</span><strong>{user?.email || 'Not provided'}</strong></div>
                   <div className="profile-row"><span>Tribe:</span><strong>Odisha (Sambalpuri)</strong></div>
                   <div className="profile-row"><span>Location:</span><strong>Sambalpur, Odisha</strong></div>
                   <div className="profile-row"><span>Verified:</span><strong>✅ Verified Artisan</strong></div>

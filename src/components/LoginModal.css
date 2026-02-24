@@ -92,32 +92,3 @@
 }
 
 .modal-submit:hover { background: var(--bark); }
-
-.demo-accounts {
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--sand);
-}
-
-.demo-accounts p {
-  font-size: 0.8rem;
-  color: var(--smoke);
-  margin-bottom: 0.6rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.demo-btn {
-  display: block;
-  width: 100%;
-  text-align: left;
-  background: var(--sand);
-  padding: 0.5rem 0.8rem;
-  border-radius: 2px;
-  font-size: 0.8rem;
-  color: var(--bark);
-  margin-bottom: 0.4rem;
-  transition: background 0.2s;
-}
-
-.demo-btn:hover { background: var(--terracotta); color: white; }

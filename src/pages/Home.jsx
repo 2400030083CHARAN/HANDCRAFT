@@ -4,7 +4,7 @@ import ProductCard from '../components/ProductCard.jsx'
 import { PRODUCTS } from '../data.js'
 import './Home.css'
 
-export default function Home({ addToCart }) {
+export default function Home({ addToCart, toggleWishlist, wishlist }) {
   const featured = PRODUCTS.filter(p => p.featured).slice(0, 4)
 
   return (
@@ -72,7 +72,12 @@ export default function Home({ addToCart }) {
           <div className="products-grid">
             {featured.map((p, i) => (
               <div key={p.id} style={{ animationDelay: `${i * 0.1}s` }}>
-                <ProductCard product={p} addToCart={addToCart} />
+                <ProductCard
+                  product={p}
+                  addToCart={addToCart}
+                  toggleWishlist={toggleWishlist}
+                  isWishlisted={wishlist.some(item => item.id === p.id)}
+                />
               </div>
             ))}
           </div>

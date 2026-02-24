@@ -117,6 +117,17 @@
   font-size: 0.85rem;
 }
 
+.user-chip-name {
+  font-weight: 600;
+}
+
+.user-role {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--smoke);
+}
+
 .logout-btn {
   background: none;
   color: var(--smoke);

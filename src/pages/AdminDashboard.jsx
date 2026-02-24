@@ -2,7 +2,18 @@ import React, { useState } from 'react'
 import { PRODUCTS, ARTISANS } from '../data.js'
 import './Dashboard.css'
 
-export default function AdminDashboard() {
+export default function AdminDashboard({ user }) {
+  if (user && user.role !== 'admin') {
+    return (
+      <div className="dashboard-page">
+        <div className="dash-hero" style={{ background: 'linear-gradient(135deg, #3D2B1F 0%, #1a0e09 100%)' }}>
+          <h1>🛡️ Admin Panel</h1>
+          <p>This dashboard is available for admin accounts only.</p>
+        </div>
+      </div>
+    )
+  }
+
   const [section, setSection] = useState('overview')
   const [artisans, setArtisans] = useState(ARTISANS)
 
@@ -10,7 +21,7 @@ export default function AdminDashboard() {
     <div className="dashboard-page">
       <div className="dash-hero" style={{ background: 'linear-gradient(135deg, #3D2B1F 0%, #1a0e09 100%)' }}>
         <h1>🛡️ Admin Panel</h1>
-        <p>Monitor and manage the TribalCraft platform</p>
+        <p>Welcome {user?.name || 'Admin'} — monitor and manage the TribalCraft platform</p>
       </div>
 
       <div className="container">

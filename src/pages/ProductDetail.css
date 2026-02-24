@@ -31,6 +31,14 @@
   align-items: center;
   justify-content: center;
   font-size: 10rem;
+  overflow: hidden;
+}
+
+.detail-product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .detail-badge {
@@ -126,6 +134,31 @@
 
 .buy-btn:hover { background: var(--bark); }
 .buy-btn.added { background: var(--moss); }
+
+.save-btn {
+  width: 100%;
+  padding: 0.85rem;
+  background: white;
+  color: var(--bark);
+  border: 1.5px solid var(--sand);
+  border-radius: 2px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  transition: all 0.2s;
+  margin-bottom: 1.5rem;
+}
+
+.save-btn:hover {
+  border-color: var(--clay);
+  color: var(--clay);
+}
+
+.save-btn.saved {
+  border-color: var(--clay);
+  color: var(--clay);
+  background: color-mix(in srgb, var(--sand) 40%, white 60%);
+}
 
 .detail-tags {
   display: flex;

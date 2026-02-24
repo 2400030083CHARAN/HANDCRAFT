@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom'
 import { PRODUCTS } from '../data.js'
 import './ProductDetail.css'
 
-export default function ProductDetail({ addToCart }) {
+export default function ProductDetail({ addToCart, toggleWishlist, wishlist }) {
   const { id } = useParams()
   const product = PRODUCTS.find(p => p.id === parseInt(id))
   const [qty, setQty] = useState(1)
@@ -16,6 +16,8 @@ export default function ProductDetail({ addToCart }) {
   ])
 
   if (!product) return <div className="not-found container">Product not found. <Link to="/shop">← Back</Link></div>
+
+  const isWishlisted = wishlist.some(item => item.id === product.id)
 
   const handleAddToCart = () => {
     for (let i = 0; i < qty; i++) addToCart(product)
@@ -39,7 +41,15 @@ export default function ProductDetail({ addToCart }) {
         <div className="detail-grid">
           <div className="detail-image">
             <div className="big-image" style={{ background: product.color }}>
-              <span>{product.emoji}</span>
+              {product.image ? (
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="detail-product-image"
+                />
+              ) : (
+                <span>{product.emoji}</span>
+              )}
             </div>
             {product.featured && <span className="detail-badge">✦ Featured Piece</span>}
           </div>
@@ -62,6 +72,13 @@ export default function ProductDetail({ addToCart }) {
 
             <button className={`buy-btn ${added ? 'added' : ''}`} onClick={handleAddToCart}>
               {added ? '✓ Added to Cart!' : 'Add to Cart'}
+            </button>
+
+            <button
+              className={`save-btn ${isWishlisted ? 'saved' : ''}`}
+              onClick={() => toggleWishlist(product)}
+            >
+              {isWishlisted ? '♥ Saved for later' : '♡ Save for later'}
             </button>
 
             <div className="detail-tags">

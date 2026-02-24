@@ -1,12 +1,25 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import ProductCard from '../components/ProductCard.jsx'
 import { PRODUCTS, CATEGORIES } from '../data.js'
 import './Shop.css'
 
-export default function Shop({ addToCart }) {
+export default function Shop({ addToCart, toggleWishlist, wishlist }) {
+  const [searchParams] = useSearchParams()
   const [search, setSearch] = useState('')
   const [category, setCategory] = useState('All')
   const [sort, setSort] = useState('default')
+
+  useEffect(() => {
+    const catParam = (searchParams.get('cat') || '').trim().toLowerCase()
+    if (!catParam) {
+      setCategory('All')
+      return
+    }
+
+    const matched = CATEGORIES.find(cat => cat.toLowerCase() === catParam)
+    setCategory(matched || 'All')
+  }, [searchParams])
 
   let filtered = PRODUCTS.filter(p => {
     const matchSearch = p.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -59,7 +72,12 @@ export default function Shop({ addToCart }) {
           <div className="shop-grid">
             {filtered.map((p, i) => (
               <div key={p.id} style={{ animationDelay: `${i * 0.07}s` }}>
-                <ProductCard product={p} addToCart={addToCart} />
+                <ProductCard
+                  product={p}
+                  addToCart={addToCart}
+                  toggleWishlist={toggleWishlist}
+                  isWishlisted={wishlist.some(item => item.id === p.id)}
+                />
               </div>
             ))}
           </div>

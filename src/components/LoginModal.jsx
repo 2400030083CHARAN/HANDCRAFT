@@ -1,13 +1,6 @@
 import React, { useState } from 'react'
 import './LoginModal.css'
 
-const DEMO_USERS = [
-  { id: 1, name: 'Admin User', email: 'admin@tribal.com', password: 'admin123', role: 'admin' },
-  { id: 2, name: 'Meera Devi', email: 'artisan@tribal.com', password: 'artisan123', role: 'artisan' },
-  { id: 3, name: 'Ravi Kumar', email: 'customer@tribal.com', password: 'cust123', role: 'customer' },
-  { id: 4, name: 'Dr. Priya Nair', email: 'consultant@tribal.com', password: 'cult123', role: 'consultant' },
-]
-
 export default function LoginModal({ setUser, onClose }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -15,13 +8,24 @@ export default function LoginModal({ setUser, onClose }) {
 
   const handleLogin = (e) => {
     e.preventDefault()
-    const found = DEMO_USERS.find(u => u.email === email && u.password === password)
-    if (found) {
-      setUser(found)
-      onClose()
-    } else {
-      setError('Invalid credentials. Try demo accounts below.')
+    if (!email || !password) {
+      setError('Please enter both email and password.')
+      return
     }
+
+    const name = email.split('@')[0]
+      .split(/[._-]/)
+      .filter(Boolean)
+      .map(part => part.charAt(0).toUpperCase() + part.slice(1))
+      .join(' ')
+
+    setUser({
+      id: Date.now(),
+      name: name || 'Customer',
+      email,
+      role: 'customer',
+    })
+    onClose()
   }
 
   return (
@@ -51,15 +55,6 @@ export default function LoginModal({ setUser, onClose }) {
           {error && <p className="modal-error">{error}</p>}
           <button type="submit" className="modal-submit">Sign In</button>
         </form>
-        <div className="demo-accounts">
-          <p>Demo Accounts:</p>
-          {DEMO_USERS.map(u => (
-            <button key={u.id} className="demo-btn"
-              onClick={() => { setEmail(u.email); setPassword(u.password) }}>
-              {u.role} — {u.email}
-            </button>
-          ))}
-        </div>
       </div>
     </div>
   )
